@@ -8,7 +8,7 @@ public class Reservation
 
     public int RestaurantId { get; set; }
 
-    public int TableId { get; set; }
+    public int? TableId { get; set; }
 
     public DateTime Date { get; set; }
 
