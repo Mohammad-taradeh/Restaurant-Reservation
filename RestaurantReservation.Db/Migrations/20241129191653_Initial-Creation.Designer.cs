@@ -12,8 +12,8 @@ using RestaurantReservation.Db;
 namespace RestaurantReservation.Db.Migrations
 {
     [DbContext(typeof(RestaurantReservationDbContext))]
-    [Migration("20241129123042_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20241129191653_Initial-Creation")]
+    partial class InitialCreation
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
