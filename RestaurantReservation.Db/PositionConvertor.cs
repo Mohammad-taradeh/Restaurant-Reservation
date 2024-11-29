@@ -2,7 +2,6 @@
 using RestaurantReservation.Db.Models;
 namespace RestaurantReservation.Db;
 
-[Obsolete]
 public class PositionConvertor: ValueConverter<Positions, string>
 {
     public PositionConvertor(): base(
