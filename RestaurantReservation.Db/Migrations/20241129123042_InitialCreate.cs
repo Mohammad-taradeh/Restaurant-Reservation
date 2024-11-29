@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace RestaurantReservation.Db.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -115,7 +115,7 @@ namespace RestaurantReservation.Db.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CustomerId = table.Column<int>(type: "int", nullable: false),
                     RestaurantId = table.Column<int>(type: "int", nullable: false),
-                    TableId = table.Column<int>(type: "int", nullable: false),
+                    TableId = table.Column<int>(type: "int", nullable: true),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     PartySize = table.Column<int>(type: "int", nullable: false)
                 },
@@ -138,8 +138,7 @@ namespace RestaurantReservation.Db.Migrations
                         name: "FK_Reservations_Tables_TableId",
                         column: x => x.TableId,
                         principalTable: "Tables",
-                        principalColumn: "TableId",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "TableId");
                 });
 
             migrationBuilder.CreateTable(
@@ -148,7 +147,7 @@ namespace RestaurantReservation.Db.Migrations
                 {
                     OrderId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ReservationId = table.Column<int>(type: "int", nullable: false),
+                    ReservationId = table.Column<int>(type: "int", nullable: true),
                     EmployeeId = table.Column<int>(type: "int", nullable: false),
                     OrderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     TotalPrice = table.Column<double>(type: "float", nullable: false)
@@ -166,8 +165,7 @@ namespace RestaurantReservation.Db.Migrations
                         name: "FK_Orders_Reservations_ReservationId",
                         column: x => x.ReservationId,
                         principalTable: "Reservations",
-                        principalColumn: "ReservationId",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "ReservationId");
                 });
 
             migrationBuilder.CreateTable(
@@ -178,7 +176,7 @@ namespace RestaurantReservation.Db.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ItemId = table.Column<int>(type: "int", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
-                    OrderId = table.Column<int>(type: "int", nullable: false)
+                    OrderId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -193,8 +191,7 @@ namespace RestaurantReservation.Db.Migrations
                         name: "FK_OrderItems_Orders_OrderId",
                         column: x => x.OrderId,
                         principalTable: "Orders",
-                        principalColumn: "OrderId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "OrderId");
                 });
 
             migrationBuilder.CreateIndex(
