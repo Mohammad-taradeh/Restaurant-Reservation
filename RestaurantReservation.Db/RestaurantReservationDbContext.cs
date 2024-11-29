@@ -7,7 +7,7 @@ namespace RestaurantReservation.Db;
 
 public class RestaurantReservationDbContext : DbContext
 {
-    private StreamWriter _writer = new ("EF Core Log.txt", append: true);
+    private StreamWriter _writer = new("EF Core Log.txt", append: true);
     public DbSet<Customer> Customers { get; set; }
     public DbSet<Reservation> Reservations { get; set; }
     public DbSet<Table> Tables { get; set; }
@@ -20,16 +20,16 @@ public class RestaurantReservationDbContext : DbContext
     {
         if (!optionsBuilder.IsConfigured)
         {
-           
-            optionsBuilder.UseSqlServer("Data Source=Mohammad;Initial Catalog=RestaurantReservationCore;Integrated Security=True;Encrypt=False;Trust Server Certificate=True").LogTo(_writer.WriteLine,
-                new[] {DbLoggerCategory.Database.Command.Name},
+
+            optionsBuilder
+                .UseSqlServer("Data Source=Mohammad;Initial Catalog=RestaurantReservationCore;Integrated Security=True;Encrypt=False;Trust Server Certificate=True").LogTo(_writer.WriteLine,
+                new[] { DbLoggerCategory.Database.Command.Name },
                 LogLevel.Information).EnableSensitiveDataLogging();
         }
 
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-       
 
         modelBuilder.Entity<Employee>()
             .Property(x => x.Position)
@@ -78,7 +78,8 @@ public class RestaurantReservationDbContext : DbContext
         };
         modelBuilder.Entity<Customer>().HasData(customers);
 
-        var reservation = new List<Reservation> { 
+        var reservation = new List<Reservation> 
+        {
             new Reservation { ReservationId = 1, CustomerId = 1, PartySize = 3, RestaurantId = 1, TableId = 2, Date = new DateTime(2024, 5, 1) },
             new Reservation { ReservationId = 2, CustomerId = 1, PartySize = 2, RestaurantId = 1, TableId = 1, Date = new DateTime(2024, 2, 1) },
             new Reservation { ReservationId = 3, CustomerId = 2, PartySize = 5, RestaurantId = 1, TableId = 3, Date = new DateTime(2024, 6, 1) },
