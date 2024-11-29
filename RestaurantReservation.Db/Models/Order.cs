@@ -14,7 +14,7 @@ public class Order
 
     public Employee Employee { get; set; }
 
-    public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
+    public List<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
 
     public Reservation Reservation { get; set; }
 }

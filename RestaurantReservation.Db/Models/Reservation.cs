@@ -16,7 +16,7 @@ public class Reservation
 
     public Customer Customer { get; set; }
 
-    public ICollection<Order> Orders { get; set; } = new List<Order>();
+    public List<Order> Orders { get; set; } = new List<Order>();
 
     public Restaurant Restaurant { get; set; }
 

@@ -8,7 +8,7 @@ public class Table
 
     public int Capacity { get; set; }
 
-    public ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();
+    public List<Reservation> Reservations { get; set; } = new List<Reservation>();
 
     public Restaurant Restaurant { get; set; }
 }
