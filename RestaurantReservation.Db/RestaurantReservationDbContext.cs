@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using RestaurantReservation.Db.Models;
+using RestaurantReservation.Db.Views;
 
 namespace RestaurantReservation.Db;
 
@@ -16,6 +16,7 @@ public class RestaurantReservationDbContext : DbContext
     public DbSet<Order> Orders { get; set; }
     public DbSet<OrderItem> OrderItems { get; set; }
     public DbSet<MenuItem> MenuItems { get; set; }
+    public DbSet<ReservationsCustomersAndRestaurants> ReservationsCustomersAndRestaurants { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         if (!optionsBuilder.IsConfigured)
@@ -30,6 +31,10 @@ public class RestaurantReservationDbContext : DbContext
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        
+        modelBuilder.Entity<ReservationsCustomersAndRestaurants>()
+            .HasNoKey()
+            .ToView(nameof(ReservationsCustomersAndRestaurants));
 
         modelBuilder.Entity<Employee>()
             .Property(x => x.Position)
