@@ -9,14 +9,14 @@ public class EmployeeRepository : BaseRepository<Employee>
     {
     }
 
-    public List<Employee> GetManagers()
+    public async Task<List<Employee>> GetManagers()
     {
-        return _dbContext.Employees.Where(emp => emp.Position == Positions.Manager).ToList();
+        return await _dbContext.Employees.Where(emp => emp.Position == Positions.Manager).ToListAsync();
     }
-    public double CalculateAverageOrderAmount(int employeeId)
+    public async Task<double> CalculateAverageOrderAmount(int employeeId)
     {
-        return _dbContext.Orders.Where(o => o.EmployeeId == employeeId)
-            .Average(x => x.TotalPrice);
+        return await _dbContext.Orders.Where(o => o.EmployeeId == employeeId)
+            .AverageAsync(x => x.TotalPrice);
 
     }
 }
