@@ -1,5 +1,4 @@
-﻿
-namespace RestaurantReservation.Db.Models;
+﻿namespace RestaurantReservation.Db.Models;
 
 public class MenuItem
 {
