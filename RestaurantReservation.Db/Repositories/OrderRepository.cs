@@ -10,21 +10,21 @@ public class OrderRepository : BaseRepository<Order>
         : base(context)
     {
     }
-    public List<MenuItem> ListOrderedMenuItems(int reservationId)
+    public async Task<List<MenuItem>> ListOrderedMenuItems(int reservationId)
     {
-        return _dbContext.OrderItems
+        return await _dbContext.OrderItems
                         .Where(o => o.Order.ReservationId == reservationId)
                         .Select(o => o.Item)
-                        .ToList();
+                        .ToListAsync();
     }
-    public List<OrderItem> ListOrdersAndMenuItems(int reservationId)
+    public async Task<List<OrderItem>> ListOrdersAndMenuItems(int reservationId)
     {
-         return _dbContext.OrderItems
+         return await _dbContext.OrderItems
            .Where(o => o.Order.ReservationId == reservationId)
            .Include(o => o.Order)
            .ThenInclude(o => o.OrderItems)
            .ThenInclude(x => x.Item)
            .AsSplitQuery()
-           .ToList();
+           .ToListAsync();
     }
 }
