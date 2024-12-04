@@ -42,13 +42,13 @@ public static class SeedingDatabase
         };
         modelBuilder.Entity<Employee>().HasData(employees);
 
-        var customers = new List<Customer>()
+        var customers = new List<Employee>()
         {
-            new Customer {CustomerId = 1, FirstName ="Mohammad", LastName = "Ahmad", Email = "201160@ppu.edu.ps", PhoneNumber = "0569726909"},
-            new Customer {CustomerId = 2, FirstName ="Amjad", LastName = "Khanaysa", Email = "201116@ppu.edu.ps", PhoneNumber = "0569726909"},
-            new Customer {CustomerId = 3, FirstName ="Ahmad", LastName = "Ameer", Email = "55226@ppu.edu.ps", PhoneNumber = "0569726909"},
+            new Employee {EmployeeID = 1, FirstName ="Mohammad", LastName = "Ahmad", Email = "201160@ppu.edu.ps", PhoneNumber = "0569726909"},
+            new Employee {EmployeeID = 2, FirstName ="Amjad", LastName = "Khanaysa", Email = "201116@ppu.edu.ps", PhoneNumber = "0569726909"},
+            new Employee {EmployeeID = 3, FirstName ="Ahmad", LastName = "Ameer", Email = "55226@ppu.edu.ps", PhoneNumber = "0569726909"},
         };
-        modelBuilder.Entity<Customer>().HasData(customers);
+        modelBuilder.Entity<Employee>().HasData(customers);
 
         var reservation = new List<Reservation>
         {
