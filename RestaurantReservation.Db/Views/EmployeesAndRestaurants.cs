@@ -1,5 +1,8 @@
-﻿namespace RestaurantReservation.Db.Views;
+﻿using Microsoft.EntityFrameworkCore;
+using RestaurantReservation.Db.Configurations;
 
+namespace RestaurantReservation.Db.Views;
+[EntityTypeConfiguration(typeof(EmployeeAndRestaurentsConfigurations))]
 public class EmployeesAndRestaurants
 {
     public int EmployeeId { get; set; }

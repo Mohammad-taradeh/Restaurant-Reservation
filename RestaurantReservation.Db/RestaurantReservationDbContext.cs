@@ -8,7 +8,7 @@ namespace RestaurantReservation.Db;
 public class RestaurantReservationDbContext : DbContext
 {
     private StreamWriter _writer = new("EF Core Log.txt", append: true);
-    public DbSet<Customer> Customers { get; set; }
+    public DbSet<Employee> Customers { get; set; }
     public DbSet<Reservation> Reservations { get; set; }
     public DbSet<Table> Tables { get; set; }
     public DbSet<Restaurant> Restaurants { get; set; }
@@ -32,17 +32,6 @@ public class RestaurantReservationDbContext : DbContext
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<EmployeesAndRestaurants>()
-            .HasNoKey()
-            .ToView(nameof(EmployeesAndRestaurants));
-
-        modelBuilder.Entity<ReservationsCustomersAndRestaurants>()
-            .HasNoKey()
-            .ToView(nameof(ReservationsCustomersAndRestaurants));
-
-        modelBuilder.Entity<Employee>()
-            .Property(x => x.Position)
-            .HasConversion<PositionConvertor>();
 
         //Seeding the database
         SeedingDatabase.Seed(modelBuilder);
