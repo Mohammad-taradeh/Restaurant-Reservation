@@ -1,7 +1,8 @@
-﻿using RestaurantReservation.Db.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using RestaurantReservation.Db.Configurations;
 
 namespace RestaurantReservation.Db.Views;
-
+[EntityTypeConfiguration(typeof(ReservationsCustomersAndRestaurentsConfiguration))]
 public class ReservationsCustomersAndRestaurants
 {
     public string ReservationID { get; set; }

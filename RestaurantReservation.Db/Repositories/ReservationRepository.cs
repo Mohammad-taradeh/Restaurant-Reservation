@@ -10,9 +10,9 @@ public class ReservationRepository : BaseRepository<Reservation>
     {
     }
 
-    public  List<Reservation> GetReservationsByCustomer(int customerId)
+    public async Task<List<Reservation>> GetReservationsByCustomer(int customerId)
     {
-        return _dbContext.Reservations.Where(res => res.CustomerId == customerId).ToList();
+        return await _dbContext.Reservations.Where(res => res.CustomerId == customerId).ToListAsync();
     }
     
     

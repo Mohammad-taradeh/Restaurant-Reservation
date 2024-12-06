@@ -2,7 +2,7 @@
 
 public enum Positions
 {
-    Employee,
-    Manager,
-    Owner
+    Employee = 0,
+    Manager = 1,
+    Owner = 2
 }
