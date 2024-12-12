@@ -1,6 +1,6 @@
 ﻿namespace RestaurantReservation.Db.Repositories;
 
-public abstract class BaseRepository<T> where T : class
+public abstract class BaseRepository<T> : IBaseRepository<T> where T : class
 {
     protected RestaurantReservationDbContext _dbContext;
     public BaseRepository(RestaurantReservationDbContext context)
@@ -15,7 +15,7 @@ public abstract class BaseRepository<T> where T : class
     public virtual async Task Update(T entity)
     {
         _dbContext.Update<T>(entity);
-         await _dbContext.SaveChangesAsync();
+        await _dbContext.SaveChangesAsync();
     }
     public virtual async Task Delete(int id)
     {
