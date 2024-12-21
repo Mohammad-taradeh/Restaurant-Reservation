@@ -8,7 +8,7 @@ namespace RestaurantReservation.Db;
 public class RestaurantReservationDbContext : DbContext
 {
     private StreamWriter _writer = new("EF Core Log.txt", append: true);
-    public DbSet<Employee> Customers { get; set; }
+    public DbSet<Customer> Customers { get; set; }
     public DbSet<Reservation> Reservations { get; set; }
     public DbSet<Table> Tables { get; set; }
     public DbSet<Restaurant> Restaurants { get; set; }
