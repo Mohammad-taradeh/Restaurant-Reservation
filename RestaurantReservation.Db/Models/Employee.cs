@@ -17,8 +17,6 @@ public class Employee
 
     public Positions Position { get; set; }
 
-    public string Email {  get; set; }
-    public string PhoneNumber { get; set; }
     public List<Order> Orders { get; set; } = new List<Order>();
 
     public Restaurant Restaurant { get; set; }
